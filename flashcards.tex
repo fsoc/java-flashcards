@@ -1,0 +1,295 @@
+
+
+\cardfrontstyle[\large\slshape]{headings}
+\cardbackstyle{empty}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{datetime}
+\usepackage{listings}
+
+\begin{document}
+
+\begin{flashcard}[Info]{Java quiz flashcards}
+\vspace*{\stretch{1}}
+File last updated on \today, \\
+at \currenttime
+
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Concurrency]{What does the final keyword do?}
+\vspace*{\stretch{1}}
+For variables: it always contains the same value, objects: It always refers to the same object.
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Concurrency]{Can final classes be sub classed?}
+\vspace*{\stretch{1}}
+No
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Concurrency]{Can final methods be overridden or hidden by subclasses?}
+\vspace*{\stretch{1}}
+No
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Concurrency]{What does it mean if a variable has the volatile keyword?}
+\vspace*{\stretch{1}}
+Stored in main memory and not CPU cache. Race conditions might still occur if writes depends on reads.
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Memory]{Difference of stack and heap?}
+\vspace*{\stretch{1}}
+Local variables, object references and method calls on the stack and allocated objects on heap.
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Keywords]{What does the protected keyword mean?}
+\vspace*{\stretch{1}}
+The member is accessable within the same package.
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Concurrency]{Difference of synchronized method or synchronized block?}
+\vspace*{\stretch{1}}
+Using a synchronized block does the atomic operations in bytecode instead if using the JVM's built-in support for aquiring a lock and handling exceptions.
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Classes]{What is an static class member?}
+\vspace*{\stretch{1}}
+A member of a class that is common to all instances of this class. Any changes by one object is seen by another object.
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Concurrency]{What is an thread-local variable?}
+\vspace*{\stretch{1}}
+It is an class member where every thread that accesses it has its own independently initialized copy of the variable. ThreadLocal instances are typically private static fields in classes that wish to associate state with a thread (e.g., a user ID or Transaction ID).
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Concurrency]{Name a caveat of synchronization of volatile variables?}
+\vspace*{\stretch{1}}
+Volatile variables are synchronized in the atomic reads and writes but non-atomic operations like var++ are not thread-safe.
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Concurrency]{How can the final keyword be used in a multi-threaded environment?}
+\vspace*{\stretch{1}}
+When the constructor exits, the values of final fields are guaranteed to be visible to other threads accessing the constructed object. Essentially, final can be used to make sure that when you construct an object, another thread accessing that object doesn't see that object in a partially-constructed state, as could otherwise happen.
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Concurrency]{What is the restriction of the keyword final?}
+\vspace*{\stretch{1}}
+When you declare a field final, you must set the value once by the time the constructor exits. It's important to emphasise that storing a reference to an object in a final field only makes the reference immutable, not the actual object. If your object is accessed by multiple threads, and you don't declare its fields final, then you must provide thread-safety by some other means.
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Lang]{What is reflection and why is it useful?}
+\vspace*{\stretch{1}}
+The name reflection is used to describe code which is able to inspect other code in the same system (or itself).
+It can be used to call a method if it exists.
+\begin{lstlisting}[frame=single]
+Method method = foo.
+getClass().
+getMethod("doSomething", null);
+method.invoke(foo, null
+\end{lstlisting}
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Memory]{What is the nursery?}
+\vspace*{\stretch{1}}
+The part of the heap reserved for allocation of new objects. These will be scanned for garbage collection more often since most objects are short-lived.
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Memory]{What is mark and sweep model?}
+\vspace*{\stretch{1}}
+The mark phase marks all objects still reachable from threads and native handlers and considers the rest garbage. The sweep phase traverses the heap and finds gaps between the live objects, the others are made available for new object allocation.
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Memory]{What is compaction?}
+\vspace*{\stretch{1}}
+The movement of objects closer and further down on the heap in order to create larger free areas near the top of the heap.
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Core]{What does \textless?\textgreater mean?}
+\vspace*{\stretch{1}}
+\textless?\textgreater is a shorthand for \textless? extends Object\textgreater , it's also known as an unbounded wildcard. So you can specify any type of object in your generic.
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Lang]{What does \textless? extends Foo\textgreater mean?}
+\vspace*{\stretch{1}}
+The generics operator matches any type that is Foo or a sub-type of Foo.
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Lang]{What is the difference between \textless? super T\textgreater and \textless? extends T\textgreater ?}
+\vspace*{\stretch{1}}
+? extends Type: Denotes a family of subtypes of type Type. This is the most useful wildcard.
+
+? super Type: Denotes a family of supertypes of type Type.
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Lang]{What is an interface?}
+\vspace*{\stretch{1}}
+An interface in the Java programming language is an abstract type that is used to specify a behaviour that classes must implement.
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Lang]{What is an abstract class?}
+\vspace*{\stretch{1}}
+A class that cannot be instantiated.
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Lang]{Can an abstract class be subclassed?}
+\vspace*{\stretch{1}}
+Yes. If the subclass is not an abstract class itself then it usually holds an implementation.
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Lang]{What is an abstract method?}
+\vspace*{\stretch{1}}
+A method declared without an implementation.
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Lang]{Does Java have multiple inheritance?}
+\vspace*{\stretch{1}}
+Only after Java8
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Lang]{How is the diamond problem handled in Java?}
+\vspace*{\stretch{1}}
+After java8: A compile error is thrown if an ambiguous implementation is found from multiple inheritance.
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Lang]{What is the default keyword}
+\vspace*{\stretch{1}}
+The keyword denotes the method body of an interface.Default methods enable new functionality to be added to the interfaces of libraries and ensure binary compatibility with code written for older versions of those interfaces.
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Lang]{What does ... mean in a method argument list?}
+\vspace*{\stretch{1}}
+Its varargs, any arguments will be seen as an array in the method body.
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Lang]{What is the Optional\textless T \textgreater class?}
+\vspace*{\stretch{1}}
+A container class which may or may not contain a non-null value. If value is present the isPresent() will be true. Creation:
+
+A a = new A();
+
+Optional\textless A \textgreater ac = Optional.of(a);
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Concurrency]{What are Futures?}
+\vspace*{\stretch{1}}
+A way to execute asynchronous calls.
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Lang]{What is an anonymous class?}
+\vspace*{\stretch{1}}
+A class defined and instantiated as a single expression, but which has no name. Like:
+\begin{lstlisting}[frame=single]
+return new A() {
+  .. body ..
+}
+\end{lstlisting}
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Concurrency]{What is the difference between Runnable and Callable?}
+\vspace*{\stretch{1}}
+A Runnable does not return a result and cannot throw a checked exception.
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Lang]{When is the @Override annotation usable?}
+\vspace*{\stretch{1}}
+When you want a compile error if a override of a method in a subclass doesnt match the signature of the method in the superclass.
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Lang]{What is the difference between checked and unchecked exceptions??}
+\vspace*{\stretch{1}}
+Unchecked exceptions are bugs caused by the programmer like IllegalArgumentException while checked exceptions represents invalid conditions in areas outside the immediate control of the porogram like FileNotFoundException.
+\vspace*{\stretch{1}}
+
+\begin{flashcard}[Lang]{Does a finally block execute even after a return?}
+\vspace*{\stretch{1}}
+Yes.
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Lang]{What is `try with resources`?}
+\vspace*{\stretch{1}}
+A new way of opening and closing resources in Java7:
+\begin{lstlisting}[frame=single]
+try (Reader br = new Reader()) {
+  ...
+}
+\end{lstlisting}
+Since Reader implements java.lang.AutoCloseable the Reader is closed as in a finally block.
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Lang]{What is a delegate and does Java have it??}
+\vspace*{\stretch{1}}
+It is a pointer to a function that is known only at runtime. Java has it after Java8.
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Lang]{How can you catch multiple exceptions?}
+\vspace*{\stretch{1}}
+\begin{lstlisting}[frame=single]
+catch (IOException|SQLException ex) {
+  ...
+}
+\end{lstlisting}
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Lang]{What is an abstract class?}
+\vspace*{\stretch{1}}
+Its a class where methods declared abstract can be declared without an implementation. Classes extending it must provide implementations for the abstract methods.
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+\begin{flashcard}[Lang]{What does the :: operator do?}
+\vspace*{\stretch{1}}
+It allows referencing methods as parameters, this happends in compile time.
+
+\begin{lstlisting}[frame=single]
+class A {
+      static int p1(int a) {
+                return a++;
+                    }
+}
+Function<Integer, Integer> p1 = A::p1;
+int x = p1.apply(1);
+\end{lstlisting}
+
+\vspace*{\stretch{1}}
+\end{flashcard}
+
+
+\end{flashcard}
+\end{document}
